@@ -38,8 +38,8 @@ useEffect(() => {
 
       const url =
         activeSection === "trash"
-          ? `http://localhost:5000/api/notes/trash/all/${user.id}`
-          : `http://localhost:5000/api/notes/user/${user.id}`;
+          ? `https://digital-notes-manager.onrender.com/api/notes/trash/all/${user.id}`
+          : `https://digital-notes-manager.onrender.com/api/notes/user/${user.id}`;
 
       const res = await fetch(url);
       const data = await res.json();
@@ -102,13 +102,13 @@ useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
 
     await fetch(
-      `http://localhost:5000/api/notes/${id}/trash`,
+      `https://digital-notes-manager.onrender.com/api/notes/${id}/trash`,
       { method: "PATCH" }
     );
 
     // ✅ reload notes from backend
     const res = await fetch(
-      `http://localhost:5000/api/notes/user/${user.id}`
+      `https://digital-notes-manager.onrender.com/api/notes/user/${user.id}`
     );
 
     const data = await res.json();
@@ -122,7 +122,7 @@ useEffect(() => {
   const restoreNote = async (id) => {
   try {
     await fetch(
-      `http://localhost:5000/api/notes/${id}/restore`,
+      `https://digital-notes-manager.onrender.com/api/notes/${id}/restore`,
       {
         method: "PATCH",
       }
@@ -137,7 +137,7 @@ useEffect(() => {
   const deleteForever = async (id) => {
   try {
     await fetch(
-      `http://localhost:5000/api/notes/${id}`,
+      `https://digital-notes-manager.onrender.com/api/notes/${id}`,
       {
         method: "DELETE",
       }
@@ -591,14 +591,14 @@ const getTextColor = (bgColor) => {
                         onClick={async () => {
 
                           await fetch(
-                            `http://localhost:5000/api/notes/${note._id}/pin`,
+                            `https://digital-notes-manager.onrender.com/api/notes/${note._id}/pin`,
                             { method: "PATCH" }
                           );
 
                           const user = JSON.parse(localStorage.getItem("user"));
 
                           const res = await fetch(
-                            `http://localhost:5000/api/notes/user/${user.id}`
+                            `https://digital-notes-manager.onrender.com/api/notes/user/${user.id}`
                           );
 
                           const data = await res.json();
@@ -618,13 +618,13 @@ const getTextColor = (bgColor) => {
                         onMouseLeave={(e)=> e.target.style.background="transparent"}
                         onClick={async () => {
                           await fetch(
-                            `http://localhost:5000/api/notes/${note._id}/favorite`,
+                            `https://digital-notes-manager.onrender.com/api/notes/${note._id}/favorite`,
                             { method: "PATCH" }
                           );
 
                           const user = JSON.parse(localStorage.getItem("user"));
                           const res = await fetch(
-                            `http://localhost:5000/api/notes/user/${user.id}`
+                            `https://digital-notes-manager.onrender.com/api/notes/user/${user.id}`
                           );
                           const data = await res.json();
                           setNotes(data);
@@ -715,14 +715,14 @@ const getTextColor = (bgColor) => {
                 e.stopPropagation();
 
                 await fetch(
-                  `http://localhost:5000/api/notes/${note._id}/favorite`,
+                  `https://digital-notes-manager.onrender.com/api/notes/${note._id}/favorite`,
                   { method: "PATCH" }
                 );
 
                 const user = JSON.parse(localStorage.getItem("user"));
 
                 const res = await fetch(
-                  `http://localhost:5000/api/notes/user/${user.id}`
+                  `https://digital-notes-manager.onrender.com/api/notes/user/${user.id}`
                 );
 
                 const data = await res.json();

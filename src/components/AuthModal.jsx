@@ -47,7 +47,7 @@ if (!agree) {
 }
 
   const res = await fetch(
-    "http://localhost:5000/api/auth/signup",
+    "https://digital-notes-manager.onrender.com/api/auth/signup",
     {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -72,7 +72,7 @@ if (!agree) {
       /* ===== LOGIN ===== */
       if (type === "login") {
         const res = await fetch(
-          "http://localhost:5000/api/auth/login",
+          "https://digital-notes-manager.onrender.com/api/auth/login",
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },

@@ -92,7 +92,7 @@ function Editor() {
   const fetchNote = async () => {
     try {
       const res = await fetch(
-        `http://localhost:5000/api/notes/${id}`
+        `https://digital-notes-manager.onrender.com/api/notes/${id}`
       );
 
       const data = await res.json();
@@ -199,7 +199,7 @@ function Editor() {
     // ✅ CREATE NEW NOTE
     if (isNew) {
       const res = await fetch(
-        "http://localhost:5000/api/notes",
+        "https://digital-notes-manager.onrender.com/api/notes",
         {
           method: "POST",
           headers: {
@@ -221,7 +221,7 @@ function Editor() {
     // ✅ UPDATE EXISTING NOTE
     else {
       const res = await fetch(
-        `http://localhost:5000/api/notes/${id}`,
+        `https://digital-notes-manager.onrender.com/api/notes/${id}`,
         {
           method: "PUT",
           headers: {
