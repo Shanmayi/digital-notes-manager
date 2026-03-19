@@ -20,7 +20,15 @@ function Dashboard() {
   const [confirmDeleteId, setConfirmDeleteId] = useState(null);
   const [editProfileOpen, setEditProfileOpen] = useState(false);
   const [newName, setNewName] = useState(user?.name || "");
-  const [profileImage, setProfileImage] = useState(user?.image || null);
+  const [profileImage, setProfileImage] = useState(() => {
+  const img = user?.image || null;
+
+  if (img && img.startsWith("blob:")) {
+    return null; // remove broken blob
+  }
+
+  return img;
+});
   const [language, setLanguage] = useState(
     localStorage.getItem("language") || "en"
   );

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import BASE_URL from "../utils/api";
 
 function NoteView() {
   const { id } = useParams();
@@ -11,9 +12,7 @@ function NoteView() {
   useEffect(() => {
     const fetchNote = async () => {
       try {
-        const res = await fetch(
-          `https://digital-notes-manager.onrender.com/api/notes/${id}`
-        );
+        const res = await fetch(`${BASE_URL}/api/notes/${id}`);
 
         const data = await res.json();
         setNote(data);
