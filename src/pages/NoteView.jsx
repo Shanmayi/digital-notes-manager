@@ -12,7 +12,7 @@ function NoteView() {
     const fetchNote = async () => {
       try {
         const res = await fetch(
-          `http://localhost:5000/api/notes/${id}`
+          `https://digital-notes-manager.onrender.com/api/notes/${id}`
         );
 
         const data = await res.json();
