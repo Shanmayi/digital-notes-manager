@@ -60,6 +60,7 @@ useEffect(() => {
         setTrash(data);
       } else {
         setNotes(data);
+        
       }
     } catch (err) {
       console.log("Error fetching notes:", err);
@@ -121,20 +122,26 @@ useEffect(() => {
   const moveToTrash = async (id) => {
   try {
     await fetch(
-
       `https://digital-notes-manager.onrender.com/api/notes/${id}/trash`,
       { method: "PATCH" }
     );
 
-    // ✅ reload notes from backend
-    const res = await fetch(
+    // 🔁 reload notes
+    const resNotes = await fetch(
       `https://digital-notes-manager.onrender.com/api/notes/user/${user?.id}`
     );
+    const notesData = await resNotes.json();
+    setNotes(notesData);
 
-    const data = await res.json();
-    setNotes(data);
+    // 🔁 reload trash (THIS is the fix)
+    const resTrash = await fetch(
+      `https://digital-notes-manager.onrender.com/api/notes/trash/all/${user?.id}`
+    );
+    const trashData = await resTrash.json();
+    setTrash(trashData);
 
     setMenuOpen(null);
+
   } catch (err) {
     console.log("Trash failed:", err);
   }
